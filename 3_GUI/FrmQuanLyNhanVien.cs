@@ -61,6 +61,14 @@ namespace _3_GUI
 
             if (validate())
             {
+                foreach (var x in _iQlNhanVienService.getlstNhanViens())
+                {
+                    if (txtEmail.Text == x.Email || txt_SDT.Text == x.PhoneNo)
+                    {
+                        MessageBox.Show("Nhân viên đã tồn tại", "Thông báo");
+                        return;
+                    }
+                }
                 NhanVien NhanVien = new NhanVien();
             NhanVien.Id = dgrid_NhanVien.Rows.Cast<DataGridViewRow>()
                 .Max(r => Convert.ToInt32(r.Cells["Id"].Value)) + 1;
@@ -109,6 +117,7 @@ namespace _3_GUI
                 MessageBox.Show("Thông tin không để trống", "Thông báo");
                 return false;
             }
+            
             else
             {
                 return true;

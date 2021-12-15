@@ -132,10 +132,20 @@ namespace _3_GUI
 
         private void Dgid_HoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             int rowIndex = e.RowIndex;
             if ((rowIndex == _qlHoaDon.GetBillsFromDB().Count) || rowIndex == -1) return;
-            _idHoaDon = Convert.ToInt32(Dgid_HoaDon.Rows[rowIndex].Cells[7].Value.ToString());
+          
             LoadHoaDonChiTiet(_idHoaDon);
+            if (Dgid_HoaDon.Rows[rowIndex].Cells[7].Value == null)
+            {
+                return;
+            }
+            else
+            {
+                _idHoaDon = Convert.ToInt32(Dgid_HoaDon.Rows[rowIndex].Cells[7].Value.ToString());
+            }
+
             //ádsdsasdsdff
         }
         
